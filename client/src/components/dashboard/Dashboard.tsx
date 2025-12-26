@@ -59,30 +59,33 @@ export function Dashboard() {
   const [isTyping, setIsTyping] = React.useState(false);
 
   React.useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let isMounted = true;
     const typeFact = async () => {
       const fact = FACTS[factIndex];
-      setIsTyping(true);
       
       // Type
       for (let i = 0; i <= fact.length; i++) {
+        if (!isMounted) return;
         setCurrentFact(fact.slice(0, i));
         await new Promise(r => setTimeout(r, 50));
       }
       
       await new Promise(r => setTimeout(r, 2000));
-      
+      if (!isMounted) return;
+
       // Delete
       for (let i = fact.length; i >= 0; i--) {
+        if (!isMounted) return;
         setCurrentFact(fact.slice(0, i));
         await new Promise(r => setTimeout(r, 30));
       }
       
+      if (!isMounted) return;
       setFactIndex((prev) => (prev + 1) % FACTS.length);
-      setIsTyping(false);
     };
 
     typeFact();
+    return () => { isMounted = false; };
   }, [factIndex]);
 
   // Random news for the day
@@ -285,7 +288,6 @@ export function Dashboard() {
                     dataKey="value"
                     stroke="none"
                     className="rotating-group"
-                    label={({ name }) => name}
                   >
                     {pieData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
