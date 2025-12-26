@@ -11,11 +11,13 @@ import NotePage from "@/pages/NotePage";
 import ProjectPage from "@/pages/ProjectPage";
 import AboutPage from "@/pages/AboutPage";
 import ChatPage from "@/pages/ChatPage";
+import LandingPage from "@/pages/LandingPage";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={LandingPage} />
+      <Route path="/dashboard" component={Home} />
       <Route path="/notes" component={Notes} />
       <Route path="/notes/:id" component={NotePage} />
       <Route path="/maps" component={Maps} />
