@@ -262,17 +262,18 @@ export function Dashboard() {
             <CardTitle>Focus Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px] flex items-center justify-center relative">
+            <div className="h-[300px] flex items-center justify-center relative overflow-hidden">
               <style>{`
                 @keyframes slow-rotate {
                   from { transform: rotate(0deg); }
                   to { transform: rotate(360deg); }
                 }
-                .rotating-chart {
+                .rotating-group {
                   animation: slow-rotate 60s linear infinite;
+                  transform-origin: center;
                 }
               `}</style>
-              <ResponsiveContainer width="100%" height="100%" className="rotating-chart">
+              <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={pieData}
@@ -282,6 +283,8 @@ export function Dashboard() {
                     outerRadius={80}
                     paddingAngle={5}
                     dataKey="value"
+                    stroke="none"
+                    className="rotating-group"
                   >
                     {pieData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
