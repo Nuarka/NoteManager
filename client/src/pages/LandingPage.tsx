@@ -196,9 +196,16 @@ export default function LandingPage() {
             ].map((feature, i) => (
               <Card
                 key={i}
-                className="border-none shadow-lg hover:shadow-xl transition-shadow bg-card rounded-3xl overflow-hidden group"
+                className="border-none shadow-lg hover:shadow-xl transition-shadow bg-card rounded-3xl overflow-hidden group relative"
               >
-                <CardContent className="p-8 space-y-4">
+                {/* Tilted Cross Pattern */}
+                <div className="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity pointer-events-none">
+                  <div className="h-12 w-12 flex items-center justify-center rotate-45">
+                    <div className="absolute h-full w-0.5 bg-foreground" />
+                    <div className="absolute w-full h-0.5 bg-foreground" />
+                  </div>
+                </div>
+                <CardContent className="p-8 space-y-4 relative z-10">
                   <div className="h-12 w-12 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <feature.icon className="h-6 w-6" />
                   </div>
@@ -254,9 +261,16 @@ export default function LandingPage() {
             ].map((user, i) => (
               <Card
                 key={i}
-                className="border-none shadow-xl bg-card rounded-[2rem] overflow-hidden hover:scale-[1.02] transition-transform"
+                className="border-none shadow-xl bg-card rounded-[2rem] overflow-hidden hover:scale-[1.02] transition-transform relative group"
               >
-                <CardContent className="p-8 space-y-4">
+                {/* Tilted Cross Pattern */}
+                <div className="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity pointer-events-none">
+                  <div className="h-8 w-8 flex items-center justify-center rotate-45">
+                    <div className="absolute h-full w-0.5 bg-foreground" />
+                    <div className="absolute w-full h-0.5 bg-foreground" />
+                  </div>
+                </div>
+                <CardContent className="p-8 space-y-4 relative z-10">
                   <div className="flex items-center gap-3">
                     <Avatar className="h-12 w-12 border-2 border-primary/20">
                       <AvatarImage src={user.avatar} />
