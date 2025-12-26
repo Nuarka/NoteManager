@@ -20,12 +20,19 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20 overflow-x-hidden">
-      {/* Decorative Blobs */}
-      <div className="fixed inset-0 pointer-events-none -z-5">
-        <div className="absolute top-[15%] left-[5%] w-72 h-72 bg-purple-500/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute top-[40%] right-[10%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-700" />
-        <div className="absolute bottom-[20%] left-[15%] w-80 h-80 bg-orange-500/10 rounded-full blur-[110px] animate-pulse delay-1000" />
-        <div className="absolute top-[60%] left-[40%] w-64 h-64 bg-emerald-500/10 rounded-full blur-[90px] animate-pulse delay-500" />
+      {/* Decorative Floating Objects */}
+      <div className="fixed inset-0 pointer-events-none -z-5 overflow-hidden">
+        {/* Colorful Blobs */}
+        <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-primary/20 rounded-full blur-[80px] animate-pulse" />
+        <div className="absolute top-[30%] right-[5%] w-72 h-72 bg-accent/20 rounded-full blur-[100px] animate-pulse delay-700" />
+        <div className="absolute bottom-[15%] left-[20%] w-80 h-80 bg-orange-500/10 rounded-full blur-[110px] animate-pulse delay-1000" />
+        <div className="absolute top-[60%] left-[45%] w-56 h-56 bg-emerald-500/15 rounded-full blur-[90px] animate-pulse delay-300" />
+        <div className="absolute bottom-[40%] right-[15%] w-64 h-64 bg-purple-500/15 rounded-full blur-[80px] animate-pulse delay-500" />
+        
+        {/* Floating Shapes */}
+        <div className="absolute top-[20%] right-[25%] h-12 w-12 border-2 border-primary/20 rounded-xl rotate-12 animate-bounce" style={{ animationDuration: '4s' }} />
+        <div className="absolute top-[50%] left-[15%] h-8 w-8 bg-accent/20 rounded-full animate-bounce" style={{ animationDuration: '3s' }} />
+        <div className="absolute bottom-[30%] right-[30%] h-10 w-10 border-2 border-orange-500/20 rounded-full animate-bounce" style={{ animationDuration: '5s' }} />
       </div>
 
       {/* Navigation */}
@@ -60,7 +67,7 @@ export default function LandingPage() {
             <Sparkles className="h-3 w-3 mr-2 inline" /> Revolutionize Your Workflow
           </Badge>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] max-w-4xl mx-auto">
-            Organize Your <span className="text-primary italic inline-block px-2">Mind</span>, Elevate Your Work.
+            Organize Your <span className="text-primary italic inline-block px-4 py-1">Mind</span>, Elevate Your Work.
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
             The all-in-one workspace that combines intelligent note-taking, interactive mind maps, and AI-powered assistance.
