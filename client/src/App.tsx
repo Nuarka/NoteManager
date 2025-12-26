@@ -12,6 +12,8 @@ import ProjectPage from "@/pages/ProjectPage";
 import AboutPage from "@/pages/AboutPage";
 import ChatPage from "@/pages/ChatPage";
 import LandingPage from "@/pages/LandingPage";
+import PrivacyPage from "@/pages/PrivacyPage";
+import TermsPage from "@/pages/TermsPage";
 
 function Router() {
   return (
@@ -24,6 +26,8 @@ function Router() {
       <Route path="/projects/:id" component={ProjectPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/chat" component={ChatPage} />
+      <Route path="/privacy" component={PrivacyPage} />
+      <Route path="/terms" component={TermsPage} />
       <Route component={NotFound} />
     </Switch>
   );

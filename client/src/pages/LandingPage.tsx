@@ -15,9 +15,19 @@ import {
   Sparkles
 } from "lucide-react";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background selection:bg-primary/20">
+    <div className="min-h-screen bg-background selection:bg-primary/20 overflow-x-hidden">
+      {/* Decorative Blobs */}
+      <div className="fixed inset-0 pointer-events-none -z-5">
+        <div className="absolute top-[15%] left-[5%] w-72 h-72 bg-purple-500/10 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute top-[40%] right-[10%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-700" />
+        <div className="absolute bottom-[20%] left-[15%] w-80 h-80 bg-orange-500/10 rounded-full blur-[110px] animate-pulse delay-1000" />
+        <div className="absolute top-[60%] left-[40%] w-64 h-64 bg-emerald-500/10 rounded-full blur-[90px] animate-pulse delay-500" />
+      </div>
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b bg-background/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -50,7 +60,7 @@ export default function LandingPage() {
             <Sparkles className="h-3 w-3 mr-2 inline" /> Revolutionize Your Workflow
           </Badge>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] max-w-4xl mx-auto">
-            Organize Your <span className="text-primary italic">Mind</span>, Elevate Your Work.
+            Organize Your <span className="text-primary italic inline-block px-2">Mind</span>, Elevate Your Work.
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
             The all-in-one workspace that combines intelligent note-taking, interactive mind maps, and AI-powered assistance.
@@ -148,14 +158,56 @@ export default function LandingPage() {
 
       {/* Social Proof / Trust */}
       <section className="py-24 px-4">
-        <div className="max-w-3xl mx-auto text-center space-y-12">
-          <h2 className="text-4xl font-black tracking-tight italic text-primary">"The most intuitive workspace I've ever used."</h2>
-          <div className="flex items-center justify-center gap-4">
-            <div className="h-12 w-12 rounded-full bg-muted" />
-            <div className="text-left">
-              <p className="font-bold">Tamilov Danila</p>
-              <p className="text-sm text-muted-foreground">Founder of ProjectMind</p>
-            </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-black tracking-tight">Trusted by Creative Minds</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Tamilov Danila",
+                role: "Founder",
+                quote: "The most intuitive workspace I've ever used.",
+                avatar: "https://avatar.vercel.sh/danila"
+              },
+              {
+                name: "Tarasenko Kirill",
+                role: "User",
+                quote: "Transformed how our team brainstorms ideas.",
+                avatar: "attached_assets/stock_images/professional_male_av_d59ce128.jpg"
+              },
+              {
+                name: "Yanina Darya",
+                role: "User",
+                quote: "The AI assistant is a game changer for my writing.",
+                avatar: "attached_assets/stock_images/professional_female__ebe41a32.jpg"
+              },
+              {
+                name: "Ilya",
+                role: "User",
+                quote: "Mind maps here are just next level.",
+                avatar: "attached_assets/stock_images/professional_male_av_852fec4e.jpg"
+              }
+            ].map((user, i) => (
+              <Card key={i} className="border-none shadow-xl bg-card rounded-[2rem] overflow-hidden hover:scale-[1.02] transition-transform">
+                <CardContent className="p-8 space-y-4">
+                  <div className="flex items-center gap-3">
+                    <Avatar className="h-12 w-12 border-2 border-primary/20">
+                      <AvatarImage src={user.avatar} />
+                      <AvatarFallback>{user.name[0]}</AvatarFallback>
+                    </Avatar>
+                    <div className="text-left">
+                      <p className="font-bold text-sm">{user.name}</p>
+                      <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest">{user.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground italic font-medium text-sm leading-relaxed">
+                    "{user.quote}"
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -190,8 +242,8 @@ export default function LandingPage() {
           </p>
           <div className="flex gap-8 text-sm font-bold">
             <Link href="/about" className="hover:text-primary transition-colors">About Us</Link>
-            <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms</a>
+            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
           </div>
         </div>
       </footer>
