@@ -64,14 +64,7 @@ export default function LandingPage() {
           </div>
           <div className="flex items-center gap-4">
             <Link href="/dashboard">
-              <Button variant="ghost" className="font-bold">
-                Log In
-              </Button>
-            </Link>
-            <Link href="/dashboard">
-              <Button className="font-bold rounded-full px-6">
-                Get Started
-              </Button>
+              <Button className="font-bold rounded-full px-6">Get Started</Button>
             </Link>
           </div>
         </div>
