@@ -285,6 +285,7 @@ export function Dashboard() {
                     dataKey="value"
                     stroke="none"
                     className="rotating-group"
+                    label={({ name }) => name}
                   >
                     {pieData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
