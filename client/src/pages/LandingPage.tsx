@@ -93,10 +93,10 @@ export default function LandingPage() {
             Workflow
           </Badge>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] max-w-4xl mx-auto text-center">
-            <span className="block">
-              Organize Your Mind
+            <span className="block mb-2">
+              Organize Your <span className="text-primary italic inline-block px-4 py-1">Mind</span>
             </span>
-            <span className="block">Elevate Your Work.</span>
+            <span className="block mt-2">Elevate Your Work.</span>
           </h1>
 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
