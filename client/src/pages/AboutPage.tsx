@@ -5,6 +5,7 @@ import { Github, Mail, Sparkles, Heart, Cookie, ExternalLink, Send } from "lucid
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 import { useState, useEffect } from "react";
 
@@ -15,6 +16,17 @@ const HAPPY_EMOJIS = [
 export default function AboutPage() {
   const [emoji, setEmoji] = useState("👨‍💻");
   const [isTyping, setIsTyping] = useState(false);
+
+  const [formData, setFormData] = useState({ name: "", subject: "", message: "" });
+
+  const handleSendMessage = () => {
+    if (!formData.name || !formData.message) {
+      toast.error("Please fill in your name and message");
+      return;
+    }
+    toast.success("Message sent successfully! (Demo mode)");
+    setFormData({ name: "", subject: "", message: "" });
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -121,7 +133,10 @@ export default function AboutPage() {
                   <p className="font-bold select-all cursor-pointer hover:text-white transition-colors text-xs truncate">tamilovdanila@gmail.com</p>
                 </div>
 
-                <Button className="w-full bg-white text-orange-600 hover:bg-orange-50 font-black rounded-xl py-6 gap-2 shadow-xl shadow-orange-900/20 text-sm">
+                <Button 
+                  onClick={() => window.open("https://www.paypal.com/paypalme/danilatamilov", "_blank")}
+                  className="w-full bg-white text-orange-600 hover:bg-orange-50 font-black rounded-xl py-6 gap-2 shadow-xl shadow-orange-900/20 text-sm"
+                >
                   <ExternalLink className="h-4 w-4" /> Support via PayPal
                 </Button>
               </CardContent>
@@ -168,17 +183,35 @@ export default function AboutPage() {
               <div className="space-y-4">
                 <div className="space-y-1">
                   <p className="text-[10px] uppercase font-black tracking-widest text-muted-foreground">Your Name</p>
-                  <Input placeholder="Enter your name" className="rounded-xl bg-muted/50 border-none h-11 focus-visible:ring-primary/20" />
+                  <Input 
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Enter your name" 
+                    className="rounded-xl bg-muted/50 border-none h-11 focus-visible:ring-primary/20" 
+                  />
                 </div>
                 <div className="space-y-1">
                   <p className="text-[10px] uppercase font-black tracking-widest text-muted-foreground">Subject</p>
-                  <Input placeholder="What's this about?" className="rounded-xl bg-muted/50 border-none h-11 focus-visible:ring-primary/20" />
+                  <Input 
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    placeholder="What's this about?" 
+                    className="rounded-xl bg-muted/50 border-none h-11 focus-visible:ring-primary/20" 
+                  />
                 </div>
                 <div className="space-y-1">
                   <p className="text-[10px] uppercase font-black tracking-widest text-muted-foreground">Message</p>
-                  <Textarea placeholder="Type your message here..." className="rounded-xl bg-muted/50 border-none min-h-[120px] focus-visible:ring-primary/20 resize-none" />
+                  <Textarea 
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Type your message here..." 
+                    className="rounded-xl bg-muted/50 border-none min-h-[120px] focus-visible:ring-primary/20 resize-none" 
+                  />
                 </div>
-                <Button className="w-full rounded-xl py-6 font-black gap-2 shadow-xl shadow-primary/20">
+                <Button 
+                  onClick={handleSendMessage}
+                  className="w-full rounded-xl py-6 font-black gap-2 shadow-xl shadow-primary/20"
+                >
                   <Send className="h-4 w-4" /> Send Message
                 </Button>
               </div>
