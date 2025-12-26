@@ -11,23 +11,17 @@ import NotePage from "@/pages/NotePage";
 import ProjectPage from "@/pages/ProjectPage";
 import AboutPage from "@/pages/AboutPage";
 import ChatPage from "@/pages/ChatPage";
-import LandingPage from "@/pages/LandingPage";
-import PrivacyPage from "@/pages/PrivacyPage";
-import TermsPage from "@/pages/TermsPage";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={LandingPage} />
-      <Route path="/dashboard" component={Home} />
+      <Route path="/" component={Home} />
       <Route path="/notes" component={Notes} />
       <Route path="/notes/:id" component={NotePage} />
       <Route path="/maps" component={Maps} />
       <Route path="/projects/:id" component={ProjectPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/chat" component={ChatPage} />
-      <Route path="/privacy" component={PrivacyPage} />
-      <Route path="/terms" component={TermsPage} />
       <Route component={NotFound} />
     </Switch>
   );
